@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Residential Garbage Pickup | CanDo Waste Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+<body id="top">
+
+  <header class="navbar card" role="banner">
+    <div class="header-left">
+      <h3 class="brand-title">CanDo</h3>
+      <img src="../Assets/CanDo.png" alt="CanDo Truck Logo" class="truck-logo">
+    </div>
+    <nav class="header-right" aria-label="Main navigation">
+      <a href="index.html"><i class="fa fa-home"></i> HOME</a>
+      <a href="login.html"><i class="fa fa-user"></i> LOGIN</a>
+      <a href="services.html"><i class="fa fa-recycle"></i> SERVICES</a>
+      <a href="request.html"><i class="fa fa-check"></i> REQUEST</a>
+      <a href="about.html"><i class="fa fa-info-circle"></i> ABOUT US</a>
+      <a href="cart.html"><i class="fa fa-shopping-cart"></i> CART</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="service-detail-section card">
+      <div class="service-detail-grid">
+        <div class="service-img-box">
+          <img src="../Assets/Residential.jpeg" alt="Residential Garbage Collection Service by CanDo">
+        </div>
+
+        <div class="service-info">
+          <h1>Residential Garbage Pickup</h1>
+          <p class="service-price">Starting at <strong>J$1,500</strong> per month</p>
+
+          <p class="service-description">
+            CanDo provides reliable weekly household waste collection for homes across Jamaica.  
+            Our residential service ensures safe, eco-friendly disposal to keep your community clean 
+            and sustainable. We offer flexible scheduling and professional service you can count on.
+          </p>
+
+          <ul class="service-list">
+            <li>Weekly pickup schedule</li>
+            <li>Eco-friendly waste handling</li>
+            <li>Affordable monthly pricing</li>
+            <li>Serving all major communities</li>
+            <li>Professional trained staff</li>
+            <li>Flexible scheduling options</li>
+          </ul>
+
+          <div class="service-buttons">
+            <button class="btn btn-primary add-to-cart" 
+                    data-service="Residential Garbage Pickup" 
+                    data-price="1500"
+                    data-id="residential-001">
+              <i class="fa fa-cart-plus"></i> Add to Cart
+            </button>
+
+            <a href="request.html" class="btn btn-secondary">
+              <i class="fa fa-calendar-check-o"></i> Request Service
+            </a>
+          </div>
+          
+          <div class="success-message" id="success-message">
+            <i class="fa fa-check-circle"></i>
+            Service added to cart successfully!
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-features">
+      <div class="container">
+        <h2>Why Choose Our Residential Service?</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <i class="fa fa-shield"></i>
+            <h3>Reliable Service</h3>
+            <p>Consistent weekly pickups you can depend on, rain or shine</p>
+          </div>
+          
+          <div class="feature-card">
+            <i class="fa fa-leaf"></i>
+            <h3>Eco-Friendly</h3>
+            <p>Environmentally responsible waste disposal and recycling practices</p>
+          </div>
+          
+          <div class="feature-card">
+            <i class="fa fa-clock-o"></i>
+            <h3>Flexible Scheduling</h3>
+            <p>Choose pickup days that work best for your household schedule</p>
+          </div>
+          
+          <div class="feature-card">
+            <i class="fa fa-money"></i>
+            <h3>Affordable Pricing</h3>
+            <p>Competitive rates with no hidden fees or surprise charges</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="Footer">
+    <div class="container">
+      <p>&copy; 2025 CanDo Waste Solutions | Student ID: 2204814</p>
+      <p><b>GitHub:</b> 
+        <a href="https://github.com/Monique-Naje" target="_blank" rel="noopener">
+          github.com/Monique-Naje
+        </a>
+      </p>
+      <p><a href="#top">Back to Top</a></p>
+    </div>
+  </footer>
+
+<script>
+
+function loadCart() {
+  return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+
+function saveCart(cart) {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const addToCartBtn = document.querySelector(".add-to-cart");
+  const successMsg = document.getElementById("success-message");
+
+  addToCartBtn.addEventListener("click", function () {
+      const serviceName = this.dataset.service;
+      const servicePrice = Number(this.dataset.price);
+      const serviceId = this.dataset.id;
+
+      let cart = loadCart();
+
+     
+      let existingItem = cart.find(item => item.id === serviceId);
+
+      if (existingItem) {
+        existingItem.quantity += 1; 
+      } else {
+        cart.push({
+          id: serviceId,
+          name: serviceName,
+          price: servicePrice,
+          quantity: 1
+        });
+      }
+
+      saveCart(cart);
+
+      
+      successMsg.style.display = "block";
+      setTimeout(() => {
+        successMsg.style.display = "none";
+      }, 1500);
+  });
+});
+</script>
+
+  </body>
+  </html>

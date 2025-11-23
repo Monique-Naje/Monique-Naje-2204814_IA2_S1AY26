@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Request a Service - CanDo Waste Solutions</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body id="top">
+  <header class="navbar card" role="banner">
+    <div class="header-left">
+      <h3 class="brand-title">CanDo</h3>
+      <img src="../Assets/CanDo.png" alt="CanDo Truck Logo" class="truck-logo">
+    </div>
+    <nav class="header-right" aria-label="Main navigation">
+      <a href="index.html"><i class="fa fa-home"></i> HOME</a>
+      <a href="services.html"><i class="fa fa-recycle"></i> SERVICES</a>
+      <a class="active" href="request.html"><i class="fa fa-check"></i> REQUEST</a>
+      <a href="about.html"><i class="fa fa-info-circle"></i> ABOUT</a>
+      <a href="contact.html"><i class="fa fa-phone"></i>CONTACT</a>
+      <a href="login.html"><i class="fa fa-diamond"></i> LOGIN</a>
+      <a href="register.html"><i class="fa fa-user-plus"></i>REGISTER</a>
+      <a href="cart.html"><i class="fa fa-shopping-cart"></i> CART</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="request-wrapper">
+      <div class="request-box card">
+        <h1 class="request-title">Request a Service</h1>
+        <p style="text-align: center; margin-bottom: 1.5rem; color: #666;">Fill out the form below and we'll contact you within 24 hours to confirm your service</p>
+
+        <form id="request-form" class="request-form">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+            <div class="error-message" id="name-error">Please enter your full name</div>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+            <div class="error-message" id="email-error">Please enter a valid email address</div>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(876) 123-4567">
+          </div>
+
+          <div class="form-group">
+            <label for="address">Pickup Address</label>
+            <textarea id="address" name="address" rows="3" required placeholder="Enter your complete address including parish"></textarea>
+            <div class="error-message" id="address-error">Please enter your pickup address</div>
+          </div>
+
+          <div class="form-group">
+            <label for="service">Select Service Type</label>
+            <select id="service" name="service" required>
+              <option value="">-- Choose a Service --</option>
+              <option value="residential">Residential Garbage Collection</option>
+              <option value="commercial">Commercial Waste Management</option>
+              <option value="recycling">Recycling Pickup</option>
+              <option value="special">Special Request</option>
+            </select>
+            <div class="error-message" id="service-error">Please select a service type</div>
+          </div>
+
+          <div class="form-group">
+            <label for="frequency">Service Frequency</label>
+            <select id="frequency" name="frequency">
+              <option value="one_time">One-time pickup</option>
+              <option value="weekly">Weekly</option>
+              <option value="biweekly">Bi-weekly</option>
+              <option value="monthly">Monthly</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date" name="date" required>
+            <div class="error-message" id="date-error">Please select a preferred date</div>
+          </div>
+
+          <div class="form-group">
+            <label for="notes">Additional Notes</label>
+            <textarea id="notes" name="notes" rows="3" placeholder="Enter any special instructions, type of waste, or specific requirements..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary request-btn">
+            <i class="fa fa-paper-plane" style="margin-right: 8px;"></i> Submit Request
+          </button>
+          
+          <div class="success-message" id="success-message">
+            <i class="fa fa-check-circle"></i>
+            <h3>Request Submitted Successfully!</h3>
+            <p>Thank you for your service request. We'll contact you shortly to confirm the details.</p>
+          </div>
+        </form>
+      </div>
+
+      <div class="image-section">
+        <div class="image-container">
+          <img src="../Assets/CleanUp.jpg" alt="CanDo Waste Collection Team" class="image">
+          <div class="image-overlay">
+            <h3>Professional & Reliable</h3>
+            <p>Our trained team ensures safe and efficient waste collection</p>
+          </div>
+        </div>
+        
+        <div class="benefits-list">
+          <h3>Why Choose CanDo?</h3>
+          <ul>
+            <li>24/7 Customer Support</li>
+            <li>Eco-Friendly Disposal Methods</li>
+            <li>Same-Day Service Available</li>
+            <li>Competitive Pricing</li>
+            <li>Fully Licensed & Insured</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="Footer">
+    <div class="container">
+      <p>&copy; 2025 CanDo Waste Solutions | Student ID: 2204814</p>
+      <p><b>GitHub:</b> 
+        <a href="https://github.com/Monique-Naje" target="_blank" rel="noopener">
+          github.com/Monique-Naje
+        </a>
+      </p>
+      <p><a href="#top">Back to Top</a></p>
+    </div>
+  </footer>
+
+<script>
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  if(!loggedInUser){
+    alert("You must be logged in to access this page!");
+    window.location.href="login.html";
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('request-form');
+  const successMessage = document.getElementById('success-message');
+
+  
+  const inputs = form.querySelectorAll('input, select, textarea');
+
+ 
+  function validateField(field) {
+    const value = field.value.trim();
+    const formGroup = field.closest('.form-group');
+    const errorElement = formGroup.querySelector('.error-message');
+
+    formGroup.classList.remove('error', 'success');
+    if (errorElement) errorElement.style.display = 'none';
+
+    if (field.hasAttribute('required') && value === '') {
+      formGroup.classList.add('error');
+      if (errorElement) errorElement.style.display = 'block';
+      return false;
+    }
+
+    if (field.type === 'email' && value !== '') {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(value)) {
+        formGroup.classList.add('error');
+        if (errorElement) {
+          errorElement.textContent = 'Please enter a valid email address';
+          errorElement.style.display = 'block';
+        }
+        return false;
+      }
+    }
+
+    if (field.type === 'date' && value !== '') {
+      const selectedDate = new Date(value);
+      const today = new Date();
+      today.setHours(0,0,0,0);
+      if (selectedDate < today) {
+        formGroup.classList.add('error');
+        if (errorElement) {
+          errorElement.textContent = 'Please select a future date';
+          errorElement.style.display = 'block';
+        }
+        return false;
+      }
+    }
+
+    formGroup.classList.add('success');
+    return true;
+  }
+
+ 
+  function clearError(field) {
+    const formGroup = field.closest('.form-group');
+    const errorElement = formGroup.querySelector('.error-message');
+    formGroup.classList.remove('error');
+    if (errorElement) errorElement.style.display = 'none';
+  }
+
+  
+  inputs.forEach(input => {
+    input.addEventListener('blur', () => validateField(input));
+    input.addEventListener('input', () => clearError(input));
+  });
+
+  
+  const dateInput = document.getElementById('date');
+  const today = new Date().toISOString().split('T')[0];
+  dateInput.setAttribute('min', today);
+
+  
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    let isFormValid = true;
+    inputs.forEach(input => {
+      if (!validateField(input)) isFormValid = false;
+    });
+
+    if (!isFormValid) return;
+
+    
+    const serviceRequest = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone').value,
+      address: document.getElementById('address').value,
+      service: document.getElementById('service').value,
+      frequency: document.getElementById('frequency').value,
+      date: document.getElementById('date').value,
+      notes: document.getElementById('notes').value
+    };
+
+    
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(serviceRequest);
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+   
+    successMessage.style.display = 'block';
+
+    
+    successMessage.scrollIntoView({ behavior: 'smooth' });
+
+   
+    setTimeout(() => {
+      window.location.href = 'cart.html';
+    }, 1000);
+  });
+
+  // ---------------------
+  // LOGOUT FUNCTIONALITY
+  // ---------------------
+  const logoutBtn = document.getElementById('logout-btn');
+  const loginLink = document.querySelector('a[href="login.html"]');
+  const registerLink = document.querySelector('a[href="register.html"]');
+
+  function updateNavbar() {
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (loggedInUser) {
+      if (loginLink) loginLink.style.display = 'none';
+      if (registerLink) registerLink.style.display = 'none';
+      if (logoutBtn) logoutBtn.style.display = 'inline-block';
+    } else {
+      if (loginLink) loginLink.style.display = 'inline-block';
+      if (registerLink) registerLink.style.display = 'inline-block';
+      if (logoutBtn) logoutBtn.style.display = 'none';
+    }
+  }
+
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      localStorage.removeItem('loggedInUser');
+      updateNavbar();
+      alert('You have logged out successfully');
+      window.location.href = 'login.html';
+    });
+  }
+
+ 
+  updateNavbar();
+});
+</script>
+
+ </body>
+</html>

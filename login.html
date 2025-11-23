@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login | CanDo Waste Solutions</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="auth.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body id="top">
+
+<header class="navbar card">
+  <div class="header-left">
+    <h3 class="brand-title">CanDo</h3>
+    <img src="../Assets/CanDo.png" alt="CanDo Truck Logo" class="truck-logo">
+  </div>
+  <nav class="header-right">
+    <a class="active" href="index.html"><i class="fa fa-home"></i> HOME</a>
+    <a id="login-link" href="login.html"><i class="fa fa-diamond"></i> LOGIN</a>
+    <a id="register-link" class="active" href="register.html"><i class="fa fa-user-plus"></i> REGISTER</a>
+    <a id="logout-link" href="#" style="display:none;"><i class="fa fa-sign-out"></i> LOGOUT</a>
+  </nav>
+</header>
+
+<main>
+  <div class="auth-container">
+    <section class="login-box card">
+      <h1 class="login-title">Log into CanDo</h1>
+
+     
+      <div class="demo-credentials">
+        <h4>Demo Credentials:</h4>
+        <p><strong>Email:</strong> demo@cando.com</p>
+        <p><strong>Password:</strong> demo123</p>
+      </div>
+
+      <form id="login-form" class="login-form">
+        <div class="form-group">
+          <input type="email" id="login-email" name="email" placeholder="Email address" required>
+          <div class="error-message" id="email-error" style="display:none; color:red;">Please enter a valid email address</div>
+        </div>
+
+        <div class="form-group">
+          <input type="password" id="login-password" name="password" placeholder="Password" required minlength="6">
+          <div class="error-message" id="password-error" style="display:none; color:red;">Password must be at least 6 characters</div>
+        </div>
+
+        <button type="submit" class="login-btn">
+          <i class="fa fa-sign-in" style="margin-right: 8px;"></i> Log In
+        </button>
+
+        <div class="success-message" id="success-message" style="display:none; color:green;">
+          <i class="fa fa-check-circle"></i>
+          Login successful! Redirecting...
+        </div>
+
+        <p class="forgot" style="text-align:center; margin-top:1rem;">
+          <a href="forgot-password.html">Forgot password?</a>
+        </p>
+        <p class="register-link" style="text-align:center; margin-top:0.5rem;">
+          Don't have an Account? <a href="register.html">Sign up here</a>
+        </p>
+      </form>
+    </section>
+  </div>
+</main>
+
+<footer class="Footer">
+  <div class="container">
+    <p>&copy; 2025 CanDo Waste Solutions | Student ID: 2204814</p>
+    <p><b>GitHub:</b> 
+      <a href="https://github.com/Monique-Naje" target="_blank" rel="noopener">
+        github.com/Monique-Naje
+      </a>
+    </p>
+  </div>
+</footer>
+
+
+<script>
+const loginForm = document.getElementById("login-form");
+const loginEmail = document.getElementById("login-email");
+const loginPassword = document.getElementById("login-password");
+const emailError = document.getElementById("email-error");
+const passwordError = document.getElementById("password-error");
+const successMessage = document.getElementById("success-message");
+
+loginForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    
+    emailError.style.display = "none";
+    passwordError.style.display = "none";
+    successMessage.style.display = "none";
+
+    const email = loginEmail.value.trim();
+    const password = loginPassword.value;
+
+   
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+
+    
+    const user = users.find(u => u.email === email);
+
+    if(!user) {
+        emailError.textContent = "Email not found. Please register first.";
+        emailError.style.display = "block";
+        return;
+    }
+
+    if(user.password !== password) {
+        passwordError.textContent = "Incorrect password. Try again.";
+        passwordError.style.display = "block";
+        return;
+    }
+
+    
+    successMessage.style.display = "block";
+
+    
+    localStorage.setItem("loggedInUser", JSON.stringify(user));
+
+   
+    setTimeout(() => {
+        window.location.href = "index.html";
+    }, 1500);
+});
+</script>
+
+</body>
+</html>

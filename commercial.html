@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Commercial Waste Management | CanDo Waste Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+<body id="top">
+
+  <header class="navbar card" role="banner">
+    <div class="header-left">
+      <h3 class="brand-title">CanDo</h3>
+      <img src="../Assets/CanDo.png" alt="CanDo Truck Logo" class="truck-logo">
+    </div>
+    <nav class="header-right" aria-label="Main navigation">
+      <a href="index.html"><i class="fa fa-home"></i> HOME</a>
+      <a href="login.html"><i class="fa fa-user"></i> LOGIN</a>
+      <a href="services.html"><i class="fa fa-recycle"></i> SERVICES</a>
+      <a href="request.html"><i class="fa fa-check"></i> REQUEST</a>
+      <a href="about.html"><i class="fa fa-info-circle"></i> ABOUT</a>
+      <a href="cart.html"><i class="fa fa-shopping-cart"></i> CART</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="service-detail-section card">
+      <div class="service-detail-grid">
+        <div class="service-img-box">
+          <img src="../Assets/CommercialWasteManagement.jpg" alt="Commercial Waste Management Services by CanDo">
+        </div>
+
+        <div class="service-info">
+          <h1>Commercial Waste Management</h1>
+          <p class="service-price">Starting at <strong>J$4,000</strong> monthly</p>
+
+          <p class="service-description">
+            Our commercial waste service is designed for businesses, schools, offices, plazas, and public institutions.  
+            We offer scheduled pickups and scalable plans based on your waste output. Professional, reliable service 
+            tailored to your business needs.
+          </p>
+
+          <ul class="service-list">
+            <li>Custom business plans</li>
+            <li>Scheduled or on-demand pickups</li>
+            <li>Ideal for schools, offices & plazas</li>
+            <li>Reliable and professional staff</li>
+            <li>Recycling program integration</li>
+            <li>24/7 customer support</li>
+          </ul>
+
+          <div class="service-buttons">
+            <button class="btn btn-primary add-to-cart" 
+                    data-service="Commercial Waste Management" 
+                    data-price="4000"
+                    data-id="commercial-001">
+              <i class="fa fa-cart-plus"></i> Add to Cart
+            </button>
+
+            <a href="request.html" class="btn btn-secondary">
+              <i class="fa fa-calendar-check-o"></i> Get Custom Quote
+            </a>
+          </div>
+          
+          <div class="success-message" id="success-message">
+            <i class="fa fa-check-circle"></i>
+            Service added to cart successfully!
+          </div>
+        </div>
+      </div>
+
+      <div class="business-types">
+        <h3>Businesses We Serve</h3>
+        <div class="business-grid">
+          <div class="business-category">
+            <i class="fa fa-building"></i>
+            <h4>Office Buildings</h4>
+            <p>Daily waste collection for corporate offices</p>
+          </div>
+          <div class="business-category">
+            <i class="fa fa-shopping-cart"></i>
+            <h4>Retail Stores</h4>
+            <p>Waste management for shopping centers and stores</p>
+          </div>
+          <div class="business-category">
+            <i class="fa fa-graduation-cap"></i>
+            <h4>Schools & Universities</h4>
+            <p>Campus-wide waste solutions for educational institutions</p>
+          </div>
+          <div class="business-category">
+            <i class="fa fa-cutlery"></i>
+            <h4>Restaurants</h4> </p> 
+        </div>
+        </section>
+  </main>
+
+  <footer class="Footer">
+    <div class="container">
+      <p>&copy; 2025 CanDo Waste Solutions | Student ID: 2204814</p>
+      <p><b>GitHub:</b> 
+        <a href="https://github.com/Monique-Naje" target="_blank" rel="noopener">
+          github.com/Monique-Naje
+        </a>
+      </p>
+      <p><a href="#top">Back to Top</a></p>
+    </div>
+  </footer>
+
+
+<script>
+
+function loadCart() {
+  return JSON.parse(localStorage.getItem("cart")) || [];
+}
+
+
+function saveCart(cart) {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const addToCartBtn = document.querySelector(".add-to-cart");
+  const successMsg = document.getElementById("success-message");
+
+  addToCartBtn.addEventListener("click", function () {
+      const serviceName = this.dataset.service;
+      const servicePrice = Number(this.dataset.price);
+      const serviceId = this.dataset.id;
+
+      let cart = loadCart();
+
+     
+      let existingItem = cart.find(item => item.id === serviceId);
+
+      if (existingItem) {
+        existingItem.quantity += 1; 
+      } else {
+        cart.push({
+          id: serviceId,
+          name: serviceName,
+          price: servicePrice,
+          quantity: 1
+        });
+      }
+
+      saveCart(cart);
+
+      
+      successMsg.style.display = "block";
+      setTimeout(() => {
+        successMsg.style.display = "none";
+      }, 1500);
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile | CanDo Waste Solutions</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <header class="navbar card" role="banner">
+     
+    </header>
+
+    <main>
+        <div class="profile-container">
+            <div class="profile-card card">
+                <h1>User Profile</h1>
+                <div id="profile-data">
+                   
+                </div>
+                <button onclick="logout()" class="logout-btn">Logout</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+       
+        const isLoggedIn = localStorage.getItem('cando_loggedIn');
+        const userData = localStorage.getItem('cando_user');
+        
+        if (!isLoggedIn || !userData) {
+            
+            window.location.href = 'login.html';
+        } else {
+            
+            const user = JSON.parse(userData);
+            document.getElementById('profile-data').innerHTML = `
+                <p><strong>Name:</strong> ${user.name}</p>
+                <p><strong>Email:</strong> ${user.email}</p>
+                <p><strong>Phone:</strong> ${user.phone || 'Not provided'}</p>
+                <p><strong>Address:</strong> ${user.address}</p>
+                <p><strong>Parish:</strong> ${user.parish}</p>
+                <p><strong>Account Type:</strong> ${user.accountType}</p>
+            `;
+        }
+        
+        function logout() {
+            localStorage.removeItem('cando_loggedIn');
+            window.location.href = 'login.html';
+        }
+    </script>
+
+    <script src="profile.js"></script>
+</body>
+</html>
+
+

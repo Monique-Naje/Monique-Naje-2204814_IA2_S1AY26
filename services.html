@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Services | CanDo Waste Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ </head>
+
+<body id="top">
+  <header class="navbar card" role="banner">
+    <div class="header-left">
+      <h3 class="brand-title">CanDo</h3>
+      <img src="../Assets/CanDo.png" alt="CanDo Truck Logo" class="truck-logo">
+    </div>
+
+    <nav class="header-right" aria-label="Main navigation">
+      <a href="index.html"><i class="fa fa-home"></i> HOME</a>
+      <a class="active" href="services.html"><i class="fa fa-recycle"></i> SERVICES</a>
+      <a href="request.html"><i class="fa fa-check"></i> REQUEST</a>
+      <a href="about.html"><i class="fa fa-info-circle"></i> ABOUT</a>
+      <a href="contact.html"><i class="fa fa-phone"></i> CONTACT</a>
+      <a href="login.html"><i class="fa fa-diamond"></i> LOGIN</a>
+      <a href="register.html"><i class="fa fa-user-plus"></i> REGISTER</a>
+      <a href="cart.html"><i class="fa fa-shopping-cart"></i> CART</a>
+    </nav>
+  </header>
+
+  <main>
+
+    
+
+    <section class="promo-section">
+      <div class="service-card-grid">
+
+        <div class="service-card">
+          <img src="../Assets/Residential.jpeg" alt="Residential garbage collection" class="service-img">
+          <div class="service-card-content">
+            <div><i class="fa fa-trash"></i></div>
+            <h3>Residential Garbage Pickup</h3>
+            <p>Weekly household waste collection with environmentally safe disposal.</p>
+            <div class="service-cost">Starting at <strong>J$1,500</strong> per month</div>
+            <a href="residential.html" class="btn-more">MORE</a>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <img src="../Assets/CommercialWasteManagement.jpg" alt="Commercial waste management" class="service-img">
+          <div class="service-card-content">
+            <div><i class="fa fa-building"></i></div>
+            <h3>Commercial Waste Management</h3>
+            <p>Customized waste removal for businesses, schools, and public spaces.</p>
+            <div class="service-cost">Starting at <strong>J$4,000</strong> monthly</div>
+            <a href="commercial.html" class="btn-more">MORE</a>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <img src="../Assets/Solutions.png" alt="Recycling solutions" class="service-img">
+          <div class="service-card-content">
+            <div><i class="fa fa-leaf"></i></div>
+            <h3>Recycling Solutions</h3>
+            <p>Sorting, collection, and recycling of plastics, paper, and metals.</p>
+            <div class="service-cost">Included with standard pickup</div>
+            <a href="recycling.html" class="btn-more">MORE</a>
+          </div>
+        </div>
+        
+        <div class="service-card">
+          <img src="../Assets/Bulk.jpg" alt="Special pickup for large items" class="service-img">
+          <div class="service-card-content">
+            <div><i class="fa fa-truck"></i></div>
+            <h3>Special Pickup Requests</h3>
+            <p>On-demand large item pickup for bulk waste, appliances, and furniture.</p>
+            <div class="service-cost">Starting at <strong>J$2,500</strong> per request</div>
+            <a href="special.html" class="btn-more">MORE</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="spacer"></div>
+
+    <section class="request-section">
+      <h2>Ready to Get Started?</h2>
+      <p>Request a service today and experience the CanDo difference</p>
+      <div class="center-btn">
+        <a href="request.html" class="btn">Request a Service</a>
+      </div>
+    </section>
+
+    <hr>
+  </main>
+
+  <footer class="Footer">
+    <div class="container">
+      <p>&copy; 2025 CanDo Waste Solutions | Student ID: 2204814</p>
+      <p><b>GitHub:</b> 
+        <a href="https://github.com/Monique-Naje" target="_blank" rel="noopener">
+          github.com/Monique-Naje
+        </a>
+      </p>
+      <p><a href="#top">Back to Top</a></p>
+    </div>
+  </footer>
+
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+  if(!loggedInUser){
+    alert("You must be logged in to access this page!");
+    window.location.href="login.html";
+  }
+});
+</script>
+  
+</body>
+</html>
